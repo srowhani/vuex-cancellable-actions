@@ -30,6 +30,7 @@
     "deprecation": true,
     "no-mergeable-namespace": true,
     "strict-type-predicates": true,
-    "prefer-conditional-expression": true
+    "prefer-conditional-expression": true,
+    "variable-name": false
   }
 }

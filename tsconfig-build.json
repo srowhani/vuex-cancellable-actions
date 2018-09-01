@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/lib",
+    "outDir": "./dist/",
     "target": "es6",
     "sourceMap": true,
     "strictNullChecks": true,

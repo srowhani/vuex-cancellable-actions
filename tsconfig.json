@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "./dist",
     "target": "es2017",
     "sourceMap": true,
     "module": "es2015",
@@ -9,11 +9,11 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@src*": ["src*"],
-      "@test*": ["__test__*"]
+      "@test*": ["test*"]
     },
     "moduleResolution": "node",
     "noEmitOnError": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
@@ -23,5 +23,8 @@
     "noErrorTruncation": true,
     "pretty": true
   },
-  "include": ["./src/", "./__test__/", "examples"]
+  "include": [
+    "./src/",
+    "./test/"
+  ]
 }
