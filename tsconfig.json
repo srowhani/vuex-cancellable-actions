@@ -21,7 +21,8 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "noErrorTruncation": true,
-    "pretty": true
+    "pretty": true,
+    "experimentalDecorators": true
   },
   "include": [
     "./src/",

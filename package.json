@@ -16,6 +16,8 @@
     "lint:fix": "tslint --project . --fix",
     "prebuild": "rimraf dist",
     "build": "tsc -p ./tsconfig-build.json",
+    "build:example": "webpack --config examples/users/webpack.config.js",
+    "serve:example": "open ./examples/users/index.html",
     "prepublishOnly": "rimraf node_modules && npm i && npm run tsc && npm run test:prepublish && npm run build",
     "precommit": "lint-staged",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
@@ -53,12 +55,16 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.12.0",
     "ts-jest": "^22.4.1",
+    "ts-loader": "^4.5.0",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.8.0",
     "typescript": "^2.8.2",
     "vue": "^2.5.17",
+    "vue-property-decorator": "^7.0.0",
     "vuex": "^3.0.1",
-    "vuex-typex": "^3.0.1"
+    "vuex-typex": "^3.0.1",
+    "webpack": "^4.17.1",
+    "webpack-command": "^0.4.1"
   },
   "jest": {
     "testEnvironment": "node",

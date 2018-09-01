@@ -2,9 +2,9 @@ import {
   ActionError,
   createActionCanceller,
   createActionError,
-} from '@src/factory';
-import { ActionHandler, TaggedActionContext } from '@src/types';
-import { nextUid } from '@src/utils';
+} from './factory';
+import { ActionHandler, TaggedActionContext } from './types';
+import { nextUid } from './utils';
 
 const actionCanceller = createActionCanceller();
 
