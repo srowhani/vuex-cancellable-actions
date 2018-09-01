@@ -3,9 +3,8 @@ import {
   createActionCanceller,
   createActionError,
 } from '@src/factory';
-import { TaggedActionContext } from '@src/types';
+import { ActionHandler, TaggedActionContext } from '@src/types';
 import { nextUid } from '@src/utils';
-import { ActionHandler } from 'vuex-typex';
 
 const actionCanceller = createActionCanceller();
 

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./dist",
     "target": "es6",
     "sourceMap": true,
     "strictNullChecks": true,
@@ -18,13 +18,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["./src/"],
+  "include": [
+    "./src/"
+  ],
   "inlineSources": true,
   "inlineSourceMap": true,
   "exclude": [
-    "node_modules",
-    "dist",
-    "./src/**/*.test.ts",
-    "./src/**/*.spec.ts"
-  ]
+    "test/**/*"
+  ],
 }

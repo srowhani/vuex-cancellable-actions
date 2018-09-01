@@ -1,14 +1,11 @@
 import { ActionError } from '@src/factory';
 import { TaggedActionContext } from '@src/types';
-import Vue from 'vue'
 import Vuex from 'vuex'
 import { cancelAction, makeCancellable, takeLatest } from '../src'
 
 function delay (ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-Vue.use(Vuex)
 
 const calls: string[] = [];
 const commits: [string, {[k: string]: any}][] = [];
