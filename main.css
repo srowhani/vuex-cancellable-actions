@@ -1,0 +1,13 @@
+span {
+  background-color: red;
+  color: white;
+}
+
+.is-cancelled {
+  text-decoration: line-through;
+}
+
+.is-finished {
+  background-color: greenyellow;
+  color: black;
+}
