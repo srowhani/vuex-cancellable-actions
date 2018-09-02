@@ -1,30 +1,57 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { ActionContext } from 'vuex';
 
 import { makeCancellable, takeLatest } from '../../dist'
 import HomePage from './homepage';
 
 Vue.use(Vuex);
-type User = { _id: number };
-type UserState = {
-  users: User[]
+type Task = {
+  cancelled: boolean,
+  finished: boolean
+};
+type TaskState = {
+  tasks: Task[]
 }
 
-const vuexStore = new Vuex.Store<UserState>({
+const vuexStore = new Vuex.Store<TaskState>({
   state: {
-    users: [],
+    tasks: [],
   },
   mutations: {
-    addUser (state, newUser: { _id: number }) {
-      state.users.push(newUser)
-    }
+    addTask (state: TaskState) {
+      const task = state.tasks[state.tasks.length - 1];
+      if (task && task.finished) {
+        state.tasks = [];
+      }
+
+      state.tasks.push({
+        cancelled: false,
+        finished: false
+      });
+
+      return state.tasks.length;
+    },
+    cancelLatestTask (state: TaskState) {
+      const task = state.tasks[state.tasks.length - 1];
+      if (!task.finished) {
+        task.cancelled = true;
+      }
+    },
+    finishLatestTask (state: TaskState) {
+      state.tasks[state.tasks.length - 1].finished = true;
+    },
   },
   actions: makeCancellable({
-    addUser: takeLatest(async ({ state, commit, dispatch }) => {
-      await dispatch('waitFirst'); // if not done waiting user won't get commited
-      commit('addUser', { _id: state.users.length });
+    addTask: takeLatest(async ({ state, commit, dispatch }: ActionContext<TaskState, void>) => {
+      if (state.tasks.length > 0) {
+        commit('cancelLatestTask');
+      }
+      commit('addTask');
+
+      await dispatch('delay'); // if not done waiting user won't get commited
+      commit('finishLatestTask');
     }),
-    waitFirst() {
+    delay() {
       return new Promise(resolve => setTimeout(resolve, 1000));
     }
   })

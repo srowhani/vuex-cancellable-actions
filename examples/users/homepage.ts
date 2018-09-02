@@ -3,18 +3,20 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component({
   template: `
     <div class='home-page'>
-      <button @click='addUser'> Add User</button>
-      <div v-for='user in users' :key='user._id'>
-        {{user._id}}
+      <button @click='addTask'> Add Tasks</button>
+      <div v-for='task in tasks'>
+        <span :class="{'is-cancelled': task.cancelled, 'is-finished': task.finished }">
+          Status: {{task.finished ? 'Finished' : task.cancelled ? 'Cancelled' : 'Running'}}
+        </span>
       </div>
     </div>
   `
 })
 export default class HomePage extends Vue {
-  addUser () {
-    this.$store.dispatch('addUser');
+  addTask () {
+    this.$store.dispatch('addTask');
   }
-  get users () {
-    return this.$store.state.users;
+  get tasks () {
+    return this.$store.state.tasks;
   }
 }
